@@ -10,15 +10,19 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "ID")
+    private Integer id;
 
+    @Column(name = "USERNAME")
     private String username;
+
+    @Column(name = "EMAIL")
     private String email;
+
+    @Column(name = "password")
     private String password;
 
 }
