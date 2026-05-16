@@ -13,16 +13,17 @@ import lombok.*;
 public class UserEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME", nullable = false, unique = true)
     private String username;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
 }
