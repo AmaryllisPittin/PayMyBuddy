@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Integer> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     // Reconnaissance du user par mail pour le login
     Optional<UserEntity> findByEmail(String email);

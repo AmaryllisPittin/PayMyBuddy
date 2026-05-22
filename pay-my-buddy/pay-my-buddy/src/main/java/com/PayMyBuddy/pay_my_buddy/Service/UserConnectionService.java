@@ -40,7 +40,7 @@ public class UserConnectionService {
 
     }
 
-    public List<UserConnectionDTO> getConnections(Integer userId) {
+    public List<UserConnectionDTO> getConnections(Long userId) {
 
         return repository.findAll()
                 .stream()
@@ -50,7 +50,7 @@ public class UserConnectionService {
 
     }
 
-    public void removeConnection(Integer userId, Integer connectedUserId) {
+    public void removeConnection(Long userId, Long connectedUserId) {
         repository.deleteById(new UserConnectionId(userId, connectedUserId));
     }
 

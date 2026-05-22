@@ -24,7 +24,7 @@ public class UserConnectionEntity {
     @JoinColumn(name = "USER_ID")
     private UserEntity user;
 
-    @MapsId("ConnectedUserId")
+    @MapsId("connectedUserId")
     @ManyToOne
     @JoinColumn(name = "CONNECTED_USER_ID")
     private UserEntity connectedUser;

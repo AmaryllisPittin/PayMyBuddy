@@ -11,10 +11,10 @@ import com.PayMyBuddy.pay_my_buddy.Entity.UserConnectionId;
 @Repository
 public interface UserConnectionRepository extends JpaRepository<UserConnectionEntity, UserConnectionId> {
 
-    List<UserConnectionEntity> findByUser_Id(Integer userId);
+    List<UserConnectionEntity> findByUser_Id(Long userId);
 
-    boolean existsByUser_IdAndConnectedUser_Id(Integer userId, Integer connectedUserId);
+    boolean existsByUser_IdAndConnectedUser_Id(Long userId, Long connectedUserId);
 
-    void deleteByUser_IdAndConnectedUser_Id(Integer userId, Integer connectedUserId);
+    void deleteByUser_IdAndConnectedUser_Id(Long userId, Long connectedUserId);
 
 }

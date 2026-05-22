@@ -20,6 +20,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public void register(@RequestBody RegisterRequestDTO dto) {
+        System.out.println("Controller HIT ------------- HIIIIIIIIT");
         service.register(dto);
     }
 

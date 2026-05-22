@@ -19,9 +19,9 @@ import lombok.Setter;
 public class UserConnectionId implements Serializable {
 
     @Column(name = "USER_ID")
-    private Integer userId;
+    private Long userId;
 
     @Column(name = "CONNECTED_USER_ID")
-    private Integer connectedUserId;
+    private Long connectedUserId;
 
 }

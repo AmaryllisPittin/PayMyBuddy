@@ -29,14 +29,14 @@ public class UserConnectionController {
     }
 
     @GetMapping("/{userId}")
-    public List<UserConnectionDTO> getConnections(@PathVariable Integer userId) {
+    public List<UserConnectionDTO> getConnections(@PathVariable Long userId) {
         return service.getConnections(userId);
     }
 
     @DeleteMapping
     public void removeConnection(
-            @RequestParam Integer userId,
-            @RequestParam Integer connectedUserId) {
+            @RequestParam Long userId,
+            @RequestParam Long connectedUserId) {
         service.removeConnection(userId, connectedUserId);
     }
 }

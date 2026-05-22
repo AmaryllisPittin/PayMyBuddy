@@ -1,6 +1,7 @@
 package com.PayMyBuddy.pay_my_buddy.Service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.PayMyBuddy.pay_my_buddy.DTO.LoginRequestDTO;
@@ -17,7 +18,10 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Transactional
     public void register(RegisterRequestDTO dto) {
+
+        System.out.println("Début du register");
 
         if (userRepository.existsByEmail(dto.email)) {
             throw new RuntimeException("Cet email est déjà utilisé.");
@@ -35,6 +39,8 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(dto.password));
 
         userRepository.save(user);
+
+        System.out.println("utilisateur sauvegardé : ");
 
     }
 

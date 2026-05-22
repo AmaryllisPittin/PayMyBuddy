@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class UserConnectionDTO {
 
-    public Integer userId;
-    public Integer connectedUserId;
+    public Long userId;
+    public Long connectedUserId;
 
 }
