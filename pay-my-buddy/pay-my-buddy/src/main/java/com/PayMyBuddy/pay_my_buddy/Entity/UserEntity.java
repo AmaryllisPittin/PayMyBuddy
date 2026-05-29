@@ -1,5 +1,7 @@
 package com.PayMyBuddy.pay_my_buddy.Entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,5 +27,8 @@ public class UserEntity {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserConnectionEntity> connections;
 
 }

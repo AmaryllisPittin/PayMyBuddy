@@ -20,19 +20,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public void register(@RequestBody RegisterRequestDTO dto) {
-        System.out.println("Controller HIT ------------- HIIIIIIIIT");
         service.register(dto);
     }
 
     @PostMapping("/login")
     public String login(@RequestBody LoginRequestDTO dto) {
-        boolean authenticated = service.login(dto);
-
-        if (authenticated) {
-            return "Connexion réussie";
-        }
-
-        throw new RuntimeException("Mot de passe incorrect");
+        service.login(dto);
+        return "Connexion réussie";
     }
-
 }
