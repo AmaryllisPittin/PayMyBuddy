@@ -5,9 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserConnectionDTO {
-
-    public Long userId;
-    public Long connectedUserId;
-
+public class AddConnectionRequestDTO {
+    private Long connectedUserId;
 }

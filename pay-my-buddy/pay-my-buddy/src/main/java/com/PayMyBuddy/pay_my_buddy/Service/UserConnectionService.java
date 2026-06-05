@@ -1,18 +1,19 @@
 package com.PayMyBuddy.pay_my_buddy.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import com.PayMyBuddy.pay_my_buddy.DTO.UserConnectionDTO;
+import com.PayMyBuddy.pay_my_buddy.DTO.AddConnectionRequestDTO;
+import com.PayMyBuddy.pay_my_buddy.DTO.UserConnectionResponseDTO;
 import com.PayMyBuddy.pay_my_buddy.Entity.UserConnectionEntity;
-import com.PayMyBuddy.pay_my_buddy.Entity.UserConnectionId;
 import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 import com.PayMyBuddy.pay_my_buddy.Mapper.UserConnectionMapper;
 import com.PayMyBuddy.pay_my_buddy.Repository.UserConnectionRepository;
 import com.PayMyBuddy.pay_my_buddy.Repository.UserRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,36 +23,41 @@ public class UserConnectionService {
     private final UserRepository userRepository;
     private final UserConnectionMapper mapper;
 
-    public void addConnection(UserConnectionDTO dto) {
+    @Transactional
+    public void addConnection(String currentUserEmail, AddConnectionRequestDTO dto) {
 
-        if (repository.existsByUser_IdAndConnectedUser_Id(dto.userId, dto.connectedUserId)) {
+        UserEntity user = userRepository.findByEmail(currentUserEmail)
+                .orElseThrow(() -> new RuntimeException("l'Utilisateur est introuvable."));
+
+        UserEntity connectedUser = userRepository.findById(dto.getConnectedUserId())
+                .orElseThrow(() -> new RuntimeException("l'Utilisateur bénéficiaire est introuvable."));
+
+        if (repository.existsByUser_IdAndConnectedUser_Id(user.getId(), connectedUser.getId())) {
             return;
         }
 
-        UserEntity user = userRepository.findById(dto.userId)
-                .orElseThrow(() -> new RuntimeException("l'Utilisateur est introuvable."));
-
-        UserEntity connectedUser = userRepository.findById(dto.connectedUserId)
-                .orElseThrow(() -> new RuntimeException("l'Utilisateur connecté est introuvable."));
-
-        UserConnectionEntity entity = mapper.toEntity(dto, user, connectedUser);
+        UserConnectionEntity entity = mapper.toEntity(user, connectedUser);
 
         repository.save(entity);
-
     }
 
-    public List<UserConnectionDTO> getConnections(Long userId) {
+    public List<UserConnectionResponseDTO> getConnections(String currentUserEmail) {
+        UserEntity user = userRepository.findByEmail(currentUserEmail)
+                .orElseThrow(() -> new RuntimeException("l'Utilisateur est introuvable."));
 
-        return repository.findAll()
+        return repository.findByUser_Id(user.getId())
                 .stream()
-                .filter(c -> c.getId().getUserId().equals(userId))
-                .map(mapper::toDto)
-                .collect(Collectors.toList());
-
+                .map(mapper::toResponseDto)
+                .toList();
     }
 
-    public void removeConnection(Long userId, Long connectedUserId) {
-        repository.deleteById(new UserConnectionId(userId, connectedUserId));
+    @Transactional
+    public void removeConnection(String currentUserEmail, Long connectedUserId) {
+
+        UserEntity user = userRepository.findByEmail(currentUserEmail)
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable."));
+
+        repository.deleteByUser_IdAndConnectedUser_Id(user.getId(), connectedUserId);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.PayMyBuddy.pay_my_buddy.Service;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,9 +42,9 @@ public class AuthService {
 
     }
 
-    public void login(LoginRequestDTO dto) {
+    public Authentication login(LoginRequestDTO dto) {
 
-        authenticationManager.authenticate(
+        return authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         dto.email,
                         dto.password));
