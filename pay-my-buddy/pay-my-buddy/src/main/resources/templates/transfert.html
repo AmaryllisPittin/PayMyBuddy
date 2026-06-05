@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pay My Buddy - Inscription</title>
+    </head>
+    <body>
+        <topbar>
+            <h1> Pay My Buddy</h1>
+            <span>
+                <a>Transférer</a>
+                <a>Profil</a>
+                <a>Ajouter relation</a>
+                <a>Se déconnecter</a>
+            </span>            
+        </topbar>
+        <div>
+            <label for="select-relation"></label>
+            <select name="relations" id="select-relation">
+                <option value="">Sélectionner une relation</option>
+            </select>
+            <label for="description"></label>
+            <input type="text" id="description" name="description" required size="10"/>
+            <div class="amount-selector">
+                <span class="amount-value">0€</span>
+
+                <button type="button" class="dropdown-btn">
+                    <span>v</span>
+                </button>
+            </div>
+        </div>
+        <div class="transaction-container">
+            <div class="transaction-container-title">
+                <div>
+                    <h2>Relations</h2>
+                </div>
+                <div>
+                    <h2>Description</h2>
+                </div>
+                <div>
+                    <h2>Montant</h2>
+                </div>                    
+            </div>
+        </div>
+    </body>
+</html>
