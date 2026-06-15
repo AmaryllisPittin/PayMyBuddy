@@ -3,23 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../static/css/style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <title>Pay My Buddy - Relation</title>
     </head>
-    <body>
-        <topbar>
-            <h1> Pay My Buddy</h1>
-            <span>
+    <body class="body-connected">
+        <topbar class="topbar">
+            <h1>Pay My Buddy</h1>
+            <span class="links">
                 <a>Transférer</a>
                 <a>Profil</a>
                 <a>Ajouter relation</a>
                 <a>Se déconnecter</a>
             </span>            
         </topbar>
-        <div>
+        <div class="relation-search-container">
             <h1>Chercher une relation</h1>
-            <div>
-                <input type="email" id="email" pattern="Mail" size="30" required />
-                <button>Ajouter</button>
+            <div class="relation-search">
+                <input class="relation-input" type="email" id="email" pattern="Mail" size="30" required />
+                <button class="yellow-btn">Ajouter</button>
             </div>
         </div>
     </body>

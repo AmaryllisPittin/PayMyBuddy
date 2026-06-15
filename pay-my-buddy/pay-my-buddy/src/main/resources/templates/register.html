@@ -3,17 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../static/css/style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <title>Pay My Buddy - Inscription</title>
     </head>
-    <body>
+    <body class="body-no-connected">
         <div class="container">
-            <div>Pay My Buddy</div>
-            <div>
-                <input type="username" id="username" pattern="username" size="30" required />
-                <input type="email" id="email" pattern="Mail" size="30" required />
-                <input type="password" id="password" pattern="Mot de passe" size="30" required />
+            <div class="title-login">
+                <p class="title-login-text">Pay My Buddy</p>
             </div>
-            <button>Se connecter</button>
+            <div>
+                <input class="input-connexion input-username" type="username" id="username" pattern="username" placeholder="Username" required />
+                <input class="input-connexion" type="email" id="email" pattern="Mail" placeholder="Mail" required />
+                <input class="input-connexion" type="password" id="password" pattern="Mot de passe" placeholder="Mot de passe" required />
+            </div>
+            <button class="connexion-btn">S'inscrire</button>
         </div>
     </body>
 </html>
