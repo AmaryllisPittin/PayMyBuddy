@@ -14,11 +14,11 @@
             <div class="title-login">
                 <p class="title-login-text">Pay My Buddy</p>
             </div>
-            <div>
-                <input class="input-connexion" type="email" id="email" pattern="Mail" placeholder="Mail" required />
-                <input class="input-connexion" type="password" id="password" pattern="Mot de passe" placeholder="Mot de passe" required />
-            </div>
-            <button class="connexion-btn">Se connecter</button>
+            <form th:action="@{auth/login}" method="post">
+                <input class="input-connexion" type="email" name="email" placeholder="Mail" required />
+                <input class="input-connexion" type="password" name="password" placeholder="Mot de passe" required />
+            </form>
+            <button class="connexion-btn" type="submit">Se connecter</button>
         </div>
     </body>
 </html>

@@ -15,33 +15,27 @@
                 <a>Se déconnecter</a>
             </span>            
         </topbar>
-        <div>
-            <label for="select-relation"></label>
-            <select name="relations" id="select-relation">
-                <option value="">Sélectionner une relation</option>
-            </select>
-            <label for="description"></label>
-            <input type="text" id="description" name="description" required size="10"/>
-            <div class="amount-selector">
-                <span class="amount-value">0€</span>
-
-                <button type="button" class="dropdown-btn">
-                    <span>v</span>
-                </button>
-            </div>
-        </div>
-        <div class="transaction-container">
-            <div class="transaction-container-title">
-                <div>
-                    <h2>Relations</h2>
-                </div>
-                <div>
+            <form th:action="@{/transfert}" method="post">
+                <select name="connectedUserId" id="select-relation">
+                    <option value="">Sélectionner une relation</option>
+                    <option th:each="relation : ${relations}" th:value="${relation.connectedUserId}" th:text="${relation.username}"></option>
+                </select>
+                <input type="text" id="description" name="description" placeholder="Description" required />
+                <input type="number" name="amount" min="1" step="1" value="0" />
+                <button type="submit">Payer</button>
+            </form> 
+            <div class="transaction-container">
+                <h2>Mes transactions</h2>
+                <div class="transaction-container-title">
+                    <h2>Relation</h2>
                     <h2>Description</h2>
-                </div>
-                <div>
                     <h2>Montant</h2>
-                </div>                    
-            </div>
-        </div>
+                </div>
+                <div th:each="transaction : ${transactions}" class="transaction-row">
+                    <p th:text="${transaction.receiver.username}"></p>
+                    <p th:text="${transaction.description}"></p>
+                    <pth:text="${transaction.amount + '€'}"></p>
+                </div>
+            </div>                           
     </body>
 </html>

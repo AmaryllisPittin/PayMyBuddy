@@ -14,12 +14,12 @@
             <div class="title-login">
                 <p class="title-login-text">Pay My Buddy</p>
             </div>
-            <div>
-                <input class="input-connexion input-username" type="username" id="username" pattern="username" placeholder="Username" required />
-                <input class="input-connexion" type="email" id="email" pattern="Mail" placeholder="Mail" required />
-                <input class="input-connexion" type="password" id="password" pattern="Mot de passe" placeholder="Mot de passe" required />
-            </div>
-            <button class="connexion-btn">S'inscrire</button>
+            <form th:action="@{auth/register}" method="post">
+                <input class="input-connexion input-username" type="text" name="username" placeholder="Username" required />
+                <input class="input-connexion" type="email" name="email" placeholder="Mail" required />
+                <input class="input-connexion" type="password" name="email" placeholder="Mot de passe" required />
+            </form>
+            <button class="connexion-btn" type="submit">S'inscrire</button>
         </div>
     </body>
 </html>

@@ -3,9 +3,9 @@ package com.PayMyBuddy.pay_my_buddy.Controllers;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.PayMyBuddy.pay_my_buddy.DTO.LoginRequestDTO;
@@ -24,12 +24,13 @@ public class AuthController {
     private final AuthService service;
 
     @PostMapping("/register")
-    public void register(@RequestBody RegisterRequestDTO dto) {
+    public String register(@ModelAttribute RegisterRequestDTO dto) {
         service.register(dto);
+        return "redirect:/login";
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequestDTO dto, HttpServletRequest request) {
+    public String login(@ModelAttribute LoginRequestDTO dto, HttpServletRequest request) {
 
         Authentication authentication = service.login(dto);
 
@@ -42,6 +43,6 @@ public class AuthController {
                         HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                         context);
 
-        return "Connexion réussie";
+        return "redirect:/profile";
     }
 }

@@ -8,7 +8,7 @@ public class PageController {
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/auth/login";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -21,5 +21,9 @@ public class PageController {
         return "register";
     }
 
-    
+    @GetMapping("/profile")
+    public String profilePage() {
+        return "profile";
+    }
+
 }
