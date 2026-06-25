@@ -46,8 +46,8 @@ public class AuthService {
 
         return authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        dto.email,
-                        dto.password));
+                        dto.getEmail(),
+                        dto.getPassword()));
 
     }
 

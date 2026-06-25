@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../static/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -14,11 +14,11 @@
             <div class="title-login">
                 <p class="title-login-text">Pay My Buddy</p>
             </div>
-            <form th:action="@{auth/login}" method="post">
+            <form th:action="@{/auth/login}" method="post">
                 <input class="input-connexion" type="email" name="email" placeholder="Mail" required />
-                <input class="input-connexion" type="password" name="password" placeholder="Mot de passe" required />
-            </form>
-            <button class="connexion-btn" type="submit">Se connecter</button>
+                <input class="input-connexion" type="password" name="password" placeholder="Mot de passe" />
+                <button id="login-submit" class="connexion-btn" type="submit">Se connecter</button>
+            </form>            
         </div>
     </body>
 </html>

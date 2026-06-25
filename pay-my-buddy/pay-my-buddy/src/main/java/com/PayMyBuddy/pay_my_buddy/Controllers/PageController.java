@@ -21,9 +21,4 @@ public class PageController {
         return "register";
     }
 
-    @GetMapping("/profile")
-    public String profilePage() {
-        return "profile";
-    }
-
 }

@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.PayMyBuddy.pay_my_buddy.Service.CustomUserDetailService;
+
 //import com.PayMyBuddy.pay_my_buddy.Service.CustomUserDetailService;
 
 //import jakarta.servlet.http.HttpServletResponse;
@@ -22,31 +24,22 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    // private final CustomUserDetailService customUserDetailService;
+    private final CustomUserDetailService customUserDetailService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http
                 .csrf(csrf -> csrf.disable())
+                .userDetailsService(customUserDetailService)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/register").permitAll()
-                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/register").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/", "/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/auth/login", "/auth/register", "/css/style.css",
+                                "/js/**", "/images/**", "/favicon.ico")
+                        .permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.disable())
                 .httpBasic(httpBasic -> httpBasic.disable())
-                /*
-                 * .logout(logout -> logout
-                 * .logoutUrl("/auth/logout")
-                 * .logoutSuccessHandler((request, response, authentication) -> {
-                 * response.setStatus(HttpServletResponse.SC_OK);
-                 * }))
-                 * .userDetailsService(customUserDetailService)
-                 */
                 .build();
     }
 
