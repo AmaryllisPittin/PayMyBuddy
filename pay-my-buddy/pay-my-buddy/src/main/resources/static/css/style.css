@@ -8,6 +8,10 @@ a {
     cursor:pointer;
 }
 
+.body-connected {
+    margin: 0;
+}
+
 .body-no-connected {
     margin: 0;
     min-height: 100vh;
@@ -112,6 +116,11 @@ input::placeholder,
     flex-direction: row;
     justify-content: space-between;
     width: 45%;
+    color: black;
+}
+
+.topbar-links a {
+    text-decoration: none;
 }
 
 .links {
@@ -183,4 +192,80 @@ input::placeholder,
     padding: 14px 24px;
     font-weight:bold;
     cursor:pointer;
+}
+
+.transfert-page {
+    width:92%;
+    margin-left:4%;
+    margin-right:4%;
+    margin-top: 100px;
+}
+
+.transfert-form {
+    display:grid;
+    grid-template-columns: 30% 30% 20% 20%;
+    gap: 35px;
+    align-items: center;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.transfert-select,
+.transfert-description,
+.transfert-amount {
+    height: 60px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 18px;
+    font-size: 16px;
+    background-color: white;
+    margin-right: 20px;
+}
+
+.transfert-btn {
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    padding:20px;
+    width:40%;
+    background-color:#207FEE;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.transaction-container {
+    margin-top: 140px;
+    border: 1px solid  #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    min-height: 300px;
+}
+
+.transaction-container h2 {
+    margin: 0 0 18px;
+    font-size: 16px;
+}
+
+.transaction-header,
+.transaction-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1.5fr 0.6fr;
+    align-items: center;
+}
+
+.transaction-header {
+    font-weight: bold;
+    margin-bottom:10px;
+}
+
+.transaction-row {
+    min-height: 45px;
+    border-top: 1px solid #eee;
+}
+
+.transaction-row span:last-child,
+.transaction-header span:last-child {
+    text-align: right;
 }

@@ -3,39 +3,56 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
         <title>Pay My Buddy - Inscription</title>
     </head>
     <body>
-        <topbar>
+        <topbar class="topbar">
             <h1> Pay My Buddy</h1>
-            <span>
-                <a>Transférer</a>
-                <a>Profil</a>
-                <a>Ajouter relation</a>
-                <a>Se déconnecter</a>
+            <span class="topbar-links">
+                <a th:href="@{/transfert}">Transférer</a>
+                <a th:href="@{/profile}">Profil</a>
+                <a th:href="@{/relation}">Ajouter relation</a>
+                <a th:href="@{/login}">Se déconnecter</a>
             </span>            
         </topbar>
-            <form th:action="@{/transfert}" method="post">
-                <select name="connectedUserId" id="select-relation">
+
+        <main class="transfert-page">
+
+            <form class="transfert-form" th:action="@{/transfert}" method="post">
+
+                <select name="connectedUserId" class="transfert-select" required>
                     <option value="">Sélectionner une relation</option>
-                    <option th:each="relation : ${relations}" th:value="${relation.connectedUserId}" th:text="${relation.username}"></option>
+                    <option th:each="relation : ${relations}" 
+                            th:value="${relation.connectedUser.id}" 
+                            th:text="${relation.connectedUser.username}">
+                    </option>
                 </select>
-                <input type="text" id="description" name="description" placeholder="Description" required />
-                <input type="number" name="amount" min="1" step="1" value="0" />
-                <button type="submit">Payer</button>
-            </form> 
-            <div class="transaction-container">
+
+                <input class="transfert-description" type="text" name="description" placeholder="Description" required />
+                <input class="transfert-amount" type="number" name="amount" min="1" step="1" value="0" required />
+                <button class="transfert-btn" type="submit">Payer</button>
+
+            </form>
+
+            <section  class="transaction-container">
+
                 <h2>Mes transactions</h2>
-                <div class="transaction-container-title">
-                    <h2>Relation</h2>
-                    <h2>Description</h2>
-                    <h2>Montant</h2>
+                <div class="transaction-header">
+                    <span>Relations</span>
+                    <span>Description</span>
+                    <span>Montant</span>
                 </div>
+
                 <div th:each="transaction : ${transactions}" class="transaction-row">
-                    <p th:text="${transaction.receiver.username}"></p>
-                    <p th:text="${transaction.description}"></p>
-                    <pth:text="${transaction.amount + '€'}"></p>
+                    <span th:text="${transaction.receiver.username}"></span>
+                    <span th:text="${transaction.description}"></span>
+                    <span th:text="${transaction.amount + '€'}"></span>
                 </div>
-            </div>                           
+
+            </section>
+
+        </main>
+
     </body>
 </html>
