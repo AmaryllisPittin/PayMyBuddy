@@ -23,9 +23,9 @@
 
                 <select name="connectedUserId" class="transfert-select" required>
                     <option value="">Sélectionner une relation</option>
-                    <option th:each="relation : ${relations}" 
-                            th:value="${relation.connectedUser.id}" 
-                            th:text="${relation.connectedUser.username}">
+                    <option th:each="relation : ${relation}" 
+                            th:value="${relation.connectedUserId}" 
+                            th:text="${relation.username}">
                     </option>
                 </select>
 

@@ -19,12 +19,14 @@
                 <a th:href="@{/login}">Se déconnecter</a>
             </span>            
         </topbar>
-        <div class="relation-search-container">
-            <h1>Chercher une relation</h1>
-            <div class="relation-search">
-                <input class="relation-input" type="email" id="email" pattern="Mail" size="30" required />
-                <button class="yellow-btn">Ajouter</button>
+        <form class="relation-form" th:action="@{/relation}" method="post">
+            <label for="email">Chercher une relation</label>
+
+            <div class="relation-input-row">
+                <input type="email" id="email" name="email" placeholder="Saisir une addresse mail" required />
+                <button class="yellow-btn" type="submit">Ajouter</button>
+                <p class="success-message" th:if="${success}" th:text="${success}"></p>
             </div>
-        </div>
+        </form>
     </body>
 </html>

@@ -5,7 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AddConnectionRequestDTO {
-    private Long connectedUserId;
-    private String username;
+public class AddRelationRequestDTO {
+    private String email;
 }

@@ -60,4 +60,14 @@ public class UserConnectionService {
         repository.deleteByUser_IdAndConnectedUser_Id(user.getId(), connectedUserId);
     }
 
+    public void addConnectionByEmail(String currentUserEmail, String relationEmail) {
+
+        UserEntity relation = userRepository.findByEmail(relationEmail)
+                .orElseThrow(() -> new RuntimeException("Aucun utilisateur trouvé avec cet email."));
+
+        AddConnectionRequestDTO dto = new AddConnectionRequestDTO();
+        dto.setConnectedUserId(relation.getId());
+        addConnection(currentUserEmail, dto);
+    }
+
 }

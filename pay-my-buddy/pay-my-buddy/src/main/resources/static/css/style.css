@@ -4,9 +4,11 @@
     font-family: "Inter", sans-serif;
 }
 
-a {
+a,
+button {
     cursor:pointer;
 }
+
 
 .body-connected {
     margin: 0;
@@ -130,14 +132,14 @@ input::placeholder,
     justify-content: space-between;
 }
 
-.relation-search-container {
+/*.relation-search-container {
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+}*/
 
 .relation-search {
     width:100%;
@@ -268,4 +270,52 @@ input::placeholder,
 .transaction-row span:last-child,
 .transaction-header span:last-child {
     text-align: right;
+}
+
+.relation-page {
+    margin-top:250px;
+    display:flex;
+    justify-content: center;
+}
+
+.relation-form {
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 15%;
+}
+
+.relation-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.relation-imput-row {
+    display:flex;
+    gap: 15px;
+}
+
+.relation-input-row input {
+    width: 350px;
+    height: 42px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.relation-input-row button {
+    width:120px;
+    height: 42px;
+    border: none;
+    border-radius: 6px;
+    background-color:#F69F1D;
+    color: white;
+    font-weight: bold;
+}
+
+.success-message {
+    color: green;
+    margin-top:20px;
+    font-weight:bold;
 }
