@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../static/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -12,23 +12,38 @@
     <body class="body-connected">
         <topbar class="topbar">
             <h1> Pay My Buddy</h1>
-            <span>
-                <a>Transférer</a>
-                <a>Profil</a>
-                <a>Ajouter relation</a>
-                <a>Se déconnecter</a>
+            <span class="topbar-links">
+                <a th:href"@{/transfert}">Transférer</a>
+                <a th:href"@{/profile}">Profil</a>
+                <a th:href"@{/relation}">Ajouter relation</a>
+                <a th:href"@{/login}">Se déconnecter</a>
             </span>            
         </topbar>
-        <div>
-            <div>Username</div>
-            <div>Email</div>
-            <div>Mot de passe</div>
-            <button>Modifier</button>
-        </div>
-        <div>
-            <p th:text="${user.username}"></p>
-            <p th:text="${user.email}"></p>
-            <p th:text="${user.password}"></p>
+
+        <div class="profile-content">
+            <div class="profile-grid">
+
+                <div class="profile-label">Username</div>
+                    <div class="profile-value">
+                        <span th:text="${user.username}"></span>
+                        <span class="arrow"> > </span>
+                    </div>
+
+                <div class="profile-label">Email</div>
+                    <div class="profile-value">
+                        <span th:text="${user.email}"></span>
+                        <span class="arrow"> > </span>
+                    </div>
+
+                <div class="profile-label">Mot de passe</div>
+                    <div class="profile-value">**********
+                        <span class="arrow"> > </span>
+                    </div>
+
+            </div>
+
+            <button class="modify-btn">Modifier</button>
+            
         </div>
     </body>
 </html>
