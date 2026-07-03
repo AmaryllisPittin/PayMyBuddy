@@ -1,5 +1,6 @@
 package com.PayMyBuddy.pay_my_buddy.Entity;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -27,6 +28,9 @@ public class UserEntity {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private BigDecimal balance;
 
     @OneToMany(mappedBy = "user")
     private List<UserConnectionEntity> connections;

@@ -19,8 +19,15 @@
 
         <main class="transfert-page">
 
-            <form class="transfert-form" th:action="@{/transfert}" method="post">
+            <div th:if='${success}' class="success-message">
+                <span th:text='${success}'></span>
+            </div>
+            <div th:if='${error}' class="error-message">
+                <span th:text='${error}'></span>
+            </div>
 
+            <form class="transfert-form" th:action="@{/transfert}" method="post">
+                
                 <select name="connectedUserId" class="transfert-select" required>
                     <option value="">Sélectionner une relation</option>
                     <option th:each="relation : ${relations}" 

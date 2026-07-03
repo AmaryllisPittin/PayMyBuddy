@@ -323,4 +323,12 @@ input::placeholder,
     color: green;
     margin-top:20px;
     font-weight:bold;
+    maegin-left:90px;
+}
+
+.error-message {
+    color: red;
+    margin-top:20px;
+    font-weight:bold;
+    margin-left: 90px;
 }

@@ -1,6 +1,9 @@
 package com.PayMyBuddy.pay_my_buddy.Service;
 
 import org.springframework.security.core.Authentication;
+
+import java.math.BigDecimal;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,6 +40,7 @@ public class AuthService {
         user.setUsername(dto.getUsername());
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setBalance(new BigDecimal("300.00"));
 
         userRepository.save(user);
 

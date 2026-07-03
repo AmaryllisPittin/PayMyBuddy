@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.PayMyBuddy.pay_my_buddy.DTO.TransfertRequestDTO;
 import com.PayMyBuddy.pay_my_buddy.Service.TransactionService;
@@ -32,9 +33,18 @@ public class TransfertController {
     }
 
     @PostMapping("/transfert")
-    public String makeTransfert(@ModelAttribute TransfertRequestDTO dto, Authentication authentication) {
+    public String makeTransfert(@ModelAttribute TransfertRequestDTO dto, Authentication authentication,
+            RedirectAttributes redirectAttributes) {
+
         String email = authentication.getName();
-        transactionService.createTransaction(email, dto);
+
+        try {
+            transactionService.createTransaction(email, dto);
+            redirectAttributes.addFlashAttribute("success", "le virement a été effectué.");
+        } catch (RuntimeException e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
+
         return "redirect:/transfert";
     }
 
