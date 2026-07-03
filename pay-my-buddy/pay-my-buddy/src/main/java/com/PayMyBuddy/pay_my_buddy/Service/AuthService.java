@@ -25,18 +25,18 @@ public class AuthService {
     @Transactional
     public void register(RegisterRequestDTO dto) {
 
-        if (userRepository.existsByEmail(dto.email)) {
+        if (userRepository.existsByEmail(dto.getEmail())) {
             throw new RuntimeException("Cet email est déjà utilisé.");
         }
 
-        if (userRepository.existsByUsername(dto.username)) {
+        if (userRepository.existsByUsername(dto.getUsername())) {
             throw new RuntimeException("Ce nom d'utilisateur est déjà utilisé.");
         }
 
         UserEntity user = new UserEntity();
-        user.setUsername(dto.username);
-        user.setEmail(dto.email);
-        user.setPassword(passwordEncoder.encode(dto.password));
+        user.setUsername(dto.getUsername());
+        user.setEmail(dto.getEmail());
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         userRepository.save(user);
 

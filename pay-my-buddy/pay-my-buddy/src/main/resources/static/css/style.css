@@ -9,6 +9,11 @@ button {
     cursor:pointer;
 }
 
+.register-link {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
 
 .body-connected {
     margin: 0;

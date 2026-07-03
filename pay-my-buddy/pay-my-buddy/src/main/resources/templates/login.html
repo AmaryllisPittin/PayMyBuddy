@@ -17,6 +17,7 @@
             <form th:action="@{/auth/login}" method="post">
                 <input class="input-connexion" type="email" name="email" placeholder="Mail" required />
                 <input class="input-connexion" type="password" name="password" placeholder="Mot de passe" />
+                <a class="register-link" th:href="@{/register}">Créer un compte</a>
                 <button id="login-submit" class="connexion-btn" type="submit">Se connecter</button>
             </form>            
         </div>
