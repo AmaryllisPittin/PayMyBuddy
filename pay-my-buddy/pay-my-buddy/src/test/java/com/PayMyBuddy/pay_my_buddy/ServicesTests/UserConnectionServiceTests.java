@@ -183,4 +183,16 @@ public class UserConnectionServiceTests {
 
     }
 
+    @Test
+    void getConnections_shouldThrowException_whenUserDoesNotExist() {
+
+        when(userRepository.findByEmail("user@test.com")).thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> service.getConnections("user@test.com"));
+
+        assertEquals("l'Utilisateur est introuvable.", exception.getMessage());
+
+    }
+
 }
