@@ -9,6 +9,10 @@ import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 import com.PayMyBuddy.pay_my_buddy.Mapper.UserMapper;
 import com.PayMyBuddy.pay_my_buddy.Service.UserService;
 
+/**
+ * 
+ * API REST chargée de l'inscription des nouveaux utilisateurs
+ */
 @RestController
 public class UserController {
 

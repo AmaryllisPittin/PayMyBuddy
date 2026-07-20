@@ -33,7 +33,7 @@ CREATE TABLE `transactions` (
   KEY `FK_TRANSACTIONS_RECEIVER_idx` (`RECEIVER_ID`),
   CONSTRAINT `FK_TRANSACTIONS_RECEIVER` FOREIGN KEY (`RECEIVER_ID`) REFERENCES `user` (`ID`),
   CONSTRAINT `FK_TRANSACTIONS_SENDER` FOREIGN KEY (`SENDER_ID`) REFERENCES `user` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,10 +48,11 @@ CREATE TABLE `user` (
   `username` varchar(255) DEFAULT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `balance` decimal(38,2) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `email_UNIQUE` (`EMAIL`),
   UNIQUE KEY `USERNAME_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,4 +82,4 @@ CREATE TABLE `user_connections` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-03 11:47:15
+-- Dump completed on 2026-07-20 15:29:36

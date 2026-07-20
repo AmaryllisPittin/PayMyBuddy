@@ -3,6 +3,10 @@ package com.PayMyBuddy.pay_my_buddy.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * 
+ * Controller gérant l'affichage des pages de l'application
+ */
 @Controller
 public class PageController {
 

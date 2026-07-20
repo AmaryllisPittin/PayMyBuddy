@@ -19,6 +19,7 @@ public class LoggingFilter extends OncePerRequestFilter {
 
     private static final Logger requestLogger = LoggerFactory.getLogger(LoggingFilter.class);
 
+    // Recuperation des requêtes HTTP
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
@@ -26,6 +27,7 @@ public class LoggingFilter extends OncePerRequestFilter {
             FilterChain filterChain)
             throws ServletException, IOException {
 
+        // Chronometre sur le traitement
         long startTime = System.currentTimeMillis();
 
         ContentCachingRequestWrapper wrappedRequest = new ContentCachingRequestWrapper(request);
@@ -36,15 +38,15 @@ public class LoggingFilter extends OncePerRequestFilter {
         try {
             requestLogger.debug("Début traitement {}", request.getRequestURI());
 
-            filterChain.doFilter(wrappedRequest, wrappedResponse);
+            filterChain.doFilter(wrappedRequest, wrappedResponse); // Requetes récupérées
 
             requestLogger.debug("Fin du traitement {}", request.getRequestURI());
 
         } catch (Exception e) {
-            requestLogger.error("Erreur lors du traitement de {}", request.getRequestURI(), e);
+            requestLogger.error("Erreur lors du traitement de {}", request.getRequestURI(), e); // Signale les erreurs
             throw e;
         } finally {
-            long duration = System.currentTimeMillis() - startTime;
+            long duration = System.currentTimeMillis() - startTime; // Mesure du temps de traitement
             int status = wrappedResponse.getStatus();
 
             String requestBody = new String(wrappedRequest.getContentAsByteArray(), request.getCharacterEncoding());
@@ -58,7 +60,7 @@ public class LoggingFilter extends OncePerRequestFilter {
                         status, duration);
             } else {
                 requestLogger.info("<= {} {} -> status {} in {} ms", request.getMethod(), request.getRequestURI(),
-                        status, duration);
+                        status, duration); // Log sur la requete
             }
 
             wrappedResponse.copyBodyToResponse();

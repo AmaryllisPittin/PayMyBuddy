@@ -17,6 +17,10 @@ import com.PayMyBuddy.pay_my_buddy.Service.UserConnectionService;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * 
+ * API REST de gestion des relations entre utilisateurs
+ */
 @Controller
 @RequestMapping("/connections")
 @RequiredArgsConstructor

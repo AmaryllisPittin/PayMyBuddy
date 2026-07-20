@@ -12,6 +12,10 @@ import com.PayMyBuddy.pay_my_buddy.Service.UserConnectionService;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * 
+ * Controller chargé de la gestion des relations entre utilisateurs
+ */
 @Controller
 @RequiredArgsConstructor
 public class RelationController {
@@ -23,6 +27,7 @@ public class RelationController {
         return "relation";
     }
 
+    // Ajout d'une nouvelle relation à partir de l'adresse mail de l'utilisateur
     @PostMapping("/relation")
     public String addRelation(@ModelAttribute AddRelationRequestDTO dto,
             Authentication authentication,
