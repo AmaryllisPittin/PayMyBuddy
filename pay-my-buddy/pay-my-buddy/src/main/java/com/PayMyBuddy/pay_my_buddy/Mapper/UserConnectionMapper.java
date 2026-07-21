@@ -7,6 +7,11 @@ import com.PayMyBuddy.pay_my_buddy.Entity.UserConnectionEntity;
 import com.PayMyBuddy.pay_my_buddy.Entity.UserConnectionId;
 import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 
+/**
+ * 
+ * Mapper chargé de convertir les entités de relation utilisateur en DTO et
+ * inversement
+ */
 @Component
 public class UserConnectionMapper {
 

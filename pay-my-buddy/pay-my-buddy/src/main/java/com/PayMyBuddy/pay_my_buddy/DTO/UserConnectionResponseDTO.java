@@ -5,6 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * DTO contenant les informations d'une relation utilisateur
+ */
 @Getter
 @Setter
 @AllArgsConstructor

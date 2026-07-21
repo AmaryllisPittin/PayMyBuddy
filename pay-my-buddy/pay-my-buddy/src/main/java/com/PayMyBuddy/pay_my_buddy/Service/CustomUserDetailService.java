@@ -11,6 +11,11 @@ import com.PayMyBuddy.pay_my_buddy.Repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * 
+ * Service fournissant les informations d'un utilisateur pour l'authentification
+ * Spring Security
+ */
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailService implements UserDetailsService {

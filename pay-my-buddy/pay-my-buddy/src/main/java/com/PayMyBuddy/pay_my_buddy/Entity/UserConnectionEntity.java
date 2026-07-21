@@ -7,6 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * Entité représentant une relation entre deux utilisateurs
+ */
 @Entity
 @Table(name = "user_connections")
 @Getter

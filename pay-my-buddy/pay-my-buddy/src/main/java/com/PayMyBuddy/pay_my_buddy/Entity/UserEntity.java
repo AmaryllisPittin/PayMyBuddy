@@ -6,6 +6,10 @@ import java.util.List;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * 
+ * Entité représentant un utilisateur de l'application
+ */
 @Entity
 @Table(name = "user")
 @Getter

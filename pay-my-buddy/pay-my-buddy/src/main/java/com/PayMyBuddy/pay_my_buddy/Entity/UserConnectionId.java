@@ -10,6 +10,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * Clé primaire composite utilisée par l'entité UserConnectionEntity
+ */
 @Embeddable
 @Getter
 @Setter

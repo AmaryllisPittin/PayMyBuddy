@@ -3,6 +3,10 @@ package com.PayMyBuddy.pay_my_buddy.Mapper;
 import com.PayMyBuddy.pay_my_buddy.DTO.RegisterRequestDTO;
 import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 
+/**
+ * 
+ * Mapper chargé de convertir les DTO d'inscription en entités utilisateur
+ */
 public class UserMapper {
 
     public static UserEntity toEntity(RegisterRequestDTO dto) {

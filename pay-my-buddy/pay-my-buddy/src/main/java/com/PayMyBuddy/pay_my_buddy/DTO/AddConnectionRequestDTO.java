@@ -5,7 +5,7 @@ import lombok.Setter;
 
 /**
  * 
- * DTO pour ajouter une nouvelle relation entre utilisateurs
+ * DTO pour créer une nouvelle relation entre utilisateurs
  */
 @Getter
 @Setter

@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 import com.PayMyBuddy.pay_my_buddy.Repository.UserRepository;
 
+/**
+ * 
+ * Service chargé de la gestion des utilisateurs: inscription et recherche
+ */
 @Service
 public class UserService {
 
@@ -17,6 +21,10 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     * Inscription d'un nouvel utilisateur après vérification du mail + hachage du
+     * mot de passe
+     */
     public void register(UserEntity userEntity) {
         if (userRepository.existsByEmail(userEntity.getEmail())) {
             throw new RuntimeException("Cet email est déjà utilisé.");
@@ -26,6 +34,9 @@ public class UserService {
         userRepository.save(userEntity);
     }
 
+    /**
+     * Vérification des identifiants d'un utilisateur, retourne ses informations
+     */
     public UserEntity login(String email, String password) {
 
         UserEntity user = userRepository.findByEmail(email)
@@ -38,6 +49,10 @@ public class UserService {
         return user;
 
     }
+
+    /**
+     * Recherche d'un utilisateur à partir de son adresse mail
+     */
 
     public UserEntity findByEmail(String email) {
         return userRepository.findByEmail(email)

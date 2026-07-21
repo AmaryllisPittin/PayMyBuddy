@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 
+/**
+ * Repository chargé de l'accès aux données des utilisateurs
+ */
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 

@@ -17,6 +17,9 @@ import com.PayMyBuddy.pay_my_buddy.Repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Service chargé de l'authentification et de l'inscription des utilisateurs
+ */
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -27,7 +30,7 @@ public class AuthService {
 
     @Transactional
     public void register(RegisterRequestDTO dto) {
-
+        // Vérifie que le mail + nom utilisateur existent
         if (userRepository.existsByEmail(dto.getEmail())) {
             throw new RuntimeException("Cet email est déjà utilisé.");
         }
@@ -39,12 +42,18 @@ public class AuthService {
         UserEntity user = new UserEntity();
         user.setUsername(dto.getUsername());
         user.setEmail(dto.getEmail());
+        // Hache le mot de passe avant son enregistrement
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        // Version PROTOTYPE - Initialisation choisie pour le nouvel utilisateur.
         user.setBalance(new BigDecimal("300.00"));
 
         userRepository.save(user);
 
     }
+
+    /**
+     * Authentification d'un utilisateur à partir de ses identifiants
+     */
 
     public Authentication login(LoginRequestDTO dto) {
 
