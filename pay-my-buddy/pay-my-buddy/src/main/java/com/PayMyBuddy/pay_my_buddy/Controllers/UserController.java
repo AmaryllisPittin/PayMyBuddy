@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.PayMyBuddy.pay_my_buddy.DTO.RegisterRequestDTO;
-import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
-import com.PayMyBuddy.pay_my_buddy.Mapper.UserMapper;
-import com.PayMyBuddy.pay_my_buddy.Service.UserService;
+import com.PayMyBuddy.pay_my_buddy.Service.AuthService;
 
 /**
  * 
@@ -16,10 +14,10 @@ import com.PayMyBuddy.pay_my_buddy.Service.UserService;
 @RestController
 public class UserController {
 
-    private final UserService userService;
+    private final AuthService authService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(AuthService authService) {
+        this.authService = authService;
     }
 
     @PostMapping("/register")
@@ -29,8 +27,7 @@ public class UserController {
         System.out.println("DTO email = " + dto.email);
         System.out.println("DTO password = " + dto.password);
 
-        UserEntity user = UserMapper.toEntity(dto);
-        userService.register(user);
+        authService.register(dto);
     }
 
 }
