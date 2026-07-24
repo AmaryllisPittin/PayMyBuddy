@@ -6,11 +6,13 @@ import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 import com.PayMyBuddy.pay_my_buddy.Repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
  * Service chargé de la gestion des utilisateurs: inscription et recherche
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -22,8 +24,12 @@ public class UserService {
      */
 
     public UserEntity findByEmail(String email) {
+
+        log.info("Recherche de l'utilisateur avec l'adresse email : {}", email);
+
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Utilisateur introuvable."));
+
     }
 
 }

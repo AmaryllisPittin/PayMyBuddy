@@ -16,10 +16,12 @@ import com.PayMyBuddy.pay_my_buddy.Entity.UserEntity;
 import com.PayMyBuddy.pay_my_buddy.Repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Service chargé de l'authentification et de l'inscription des utilisateurs
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -30,12 +32,16 @@ public class AuthService {
 
     @Transactional
     public void register(RegisterRequestDTO dto) {
+
+        log.info("Tentative d'inscription pour l' email: {}", dto.getEmail());
         // Vérifie que le mail + nom utilisateur existent
         if (userRepository.existsByEmail(dto.getEmail())) {
+            log.warn("Echec de l'inscription: cet email est déjà utilisé ({})", dto.getEmail());
             throw new RuntimeException("Cet email est déjà utilisé.");
         }
 
         if (userRepository.existsByUsername(dto.getUsername())) {
+            log.warn("Echec de l'inscription: nom d'utilisateur déjà utilisé ({})", dto.getUsername());
             throw new RuntimeException("Ce nom d'utilisateur est déjà utilisé.");
         }
 
@@ -49,6 +55,7 @@ public class AuthService {
 
         userRepository.save(user);
 
+        log.info("Utilisateur {} créé avec succès.", user.getUsername());
     }
 
     /**
@@ -56,6 +63,8 @@ public class AuthService {
      */
 
     public Authentication login(LoginRequestDTO dto) {
+
+        log.info("Tentative de connexion pour {}", dto.getEmail());
 
         return authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
